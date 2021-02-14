@@ -15,8 +15,6 @@
         width: 500px;
       }
     </style>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7wd9zHT995bN1d8jHdTbqFgjx3M0VXvQ"></script>
   </head>
   <body onload="getLocation()">
     <div id="map-holder"></div>
@@ -30,6 +28,16 @@
     </div>
 
     <script>
+      const script = document.createElement("script");
+      script.onload = function () {
+        //do stuff with the script
+      };
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const key = urlParams.get("key");
+      script.src = "https://maps.googleapis.com/maps/api/js?key=" + key;
+
+      document.head.appendChild(script);
       let watchID;
 
       const posX = document.querySelector(".pos-x");
